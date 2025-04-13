@@ -171,18 +171,6 @@
     </div>
 </span>
 <br>
-<table align="center" width="300px"></table>
-    <tbody>
-    <tr>
-        <td align="center" width="100px">
-            <center>
-                <span style="font-size:20px">— Make OVSS possible in remote sensing contexts</span>
-            </center>
-        </td>
-
-    </tr>
-    </tbody>
-</table>
 <br>
 <!-- <br> -->
 <table align="center" width="1150px">
@@ -337,6 +325,19 @@
     <h2>Teaser</h2>
 </div> -->
 
+<table align="center" style="width: 1100px; border-collapse: collapse;">
+    <tbody>
+      <tr>
+        <td style="text-align: center; padding: 10px; line-height: 1.5;">
+          <div style="font-size: 20px; max-width: 100%;">
+            <strong>TL;DR</strong> We introduce the geospatial pixel reasoning task, construct the first benchmark dataset (EarthReason),<br>
+            and propose a simple yet effective baseline (SegEarth-R1).
+          </div>
+        </td>
+      </tr>
+    </tbody>
+</table>
+
 
 <p style="text-align:justify; text-justify:inter-ideograph;">
 <table>
@@ -376,6 +377,30 @@
 <br>
 <hr>
 <div style="text-align: center;">
+    <h1>Dataset</h1>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <div style="text-align: center;">
+                <img src="resources/table1.png" width="80%">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                <br>
+                Comparison between EarthReason and other related datasets. The gray rendering denotes the natural image dataset. "Seg", "Det", "VG", "Cls" denote segmentation, detection, visual grounding and classification datasets, respectively.
+            </p>
+        </td>
+    </tr>
+</table>
+
+<br>
+<hr>
+<div style="text-align: center;">
     <h1>Method</h1>
 </div>
 
@@ -383,7 +408,7 @@
     <tr>
         <td>
             <div style="text-align: center;">
-                <img src="resources/method.png" width="100%">
+                <img src="resources/method.png" width="80%">
             </div>
         </td>
     </tr>
@@ -397,43 +422,60 @@
     </tr>
 </table>
 
+
 <br>
 <hr>
 <div style="text-align: center;">
-    <h2>Quantitative Results</h2>
+    <h1>Quantitative Results</h1>
 </div>
 
 <table>
     <tr>
         <td>
-            <!-- <p>
-                <b>
-                    title
-                </b>
+            <p>
+                <h4 style="text-align: center;">
+                    Geospatial pixel reasoning results among SegEarth-R1 (ours) and previous related works.
+                </h4>
             </p>
-            <p style="text-align:justify; text-justify:inter-ideograph;">
+            <!-- <p style="text-align:justify; text-justify:inter-ideograph;">
                 xxx
             </p> -->
             <div style="text-align: center;">
-                <img src="resources/results1.png" width="100%">
+                <img src="resources/table2.png" width="45%">
             </div>
         </td>
     </tr>
 
     <tr>
-      <td>
-          <!-- <p>
-              <b>
-                  title
-              </b>
-          </p>
-          <p style="text-align:justify; text-justify:inter-ideograph;">
-              xxx
-          </p> -->
-          <div style="text-align: center;">
-              <img src="resources/results2.png" width="100%">
-          </div>
-      </td>
+        <td>
+            <p>
+                <h4 style="text-align: center;">
+                    Referring segmentation results among SegEarth-R1 and previous related works on RRSIS-D dataset.
+                </h4>
+            </p>
+            <!-- <p style="text-align:justify; text-justify:inter-ideograph;">
+                xxx
+            </p> -->
+            <div style="text-align: center;">
+                <img src="resources/table3.png" width="40%">
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <p>
+                <h4 style="text-align: center;">
+                    Referring segmentation results among SegEarth-R1 and previous related works on RefSegRS dataset.
+                </h4>
+            </p>
+            <!-- <p style="text-align:justify; text-justify:inter-ideograph;">
+                xxx
+            </p> -->
+            <div style="text-align: center;">
+                <img src="resources/table4.png" width="75%">
+            </div>
+        </td>
     </tr>
 
 
@@ -442,7 +484,7 @@
 <br>
 <hr>
 <div style="text-align: center;">
-    <h2>Visualizations</h2>
+    <h1>Visualizations</h1>
 </div>
 
 <table>
@@ -451,32 +493,26 @@
             <!-- <p style="text-align:justify; text-justify:inter-ideograph;">
                 xxx
             </p> -->
-            <p style="text-align:justify; text-justify:inter-ideograph;">
-              <strong>Visualizations of the segmentation results</strong>
-            </p>
+            <h3 style="text-align:center; text-justify:inter-ideograph;">
+                Qualitative Results of SegEarth-R1 on EarthReason.
+            </h3>
             <div style="text-align: center;">
-                <img src="resources/sample.jpg" width="100%">
+                <img src="resources/res_vis.png" width="100%">
             </div>
-            <p style="text-align:justify; text-justify:inter-ideograph;">
+            <!-- <p style="text-align:justify; text-justify:inter-ideograph;">
               <strong>More Visualization ...</strong>
-            </p>
-            <p style="text-align:justify; text-justify:inter-ideograph;">
-                <!-- OpenEarthMap -->
-            </p>
+            </p> -->
+            <h3 style="text-align:center; text-justify:inter-ideograph;">
+                Comparison with other models on EarthReason.
+            </h3>
             <div style="text-align: center;">
-                <img src="resources/OEM.jpg" width="90%">
+                <img src="resources/res_vis_s1.png" width="80%">
             </div>
-            <p style="text-align:justify; text-justify:inter-ideograph;">
-                <!-- UDD5 -->
-            </p>
+            <h3 style="text-align:center; text-justify:inter-ideograph;">
+                Comparison with PSALM on RRSIS-D.
+            </h3>
             <div style="text-align: center;">
-                <img src="resources/UDD5.jpg" width="90%">
-            </div>
-            <p style="text-align:justify; text-justify:inter-ideograph;">
-                <!-- WHU Building -->
-            </p>
-            <div style="text-align: center;">
-                <img src="resources/WHU.jpg" width="90%">
+                <img src="resources/res_vis_s2.png" width="50%">
             </div>
         </td>
     </tr>
