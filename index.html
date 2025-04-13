@@ -1,0 +1,501 @@
+<html></html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!--
+    <script src="./resources/jsapi" type="text/javascript"></script>
+    <script type="text/javascript" async>google.load("jquery", "1.3.2");</script>
+   -->
+    <style type="text/css">
+        @font-face {
+            font-family: 'Avenir Book';
+            src: url("./fonts/Avenir_Book.ttf"); /* File to be stored at your site */
+        }
+        body {
+            font-family: "Avenir Book", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight:300;
+            font-size:14px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1200px;
+        }
+        h1 {
+            font-weight:300;
+        }
+        h2 {
+            font-weight:300;
+        }
+
+        p {
+            font-weight:300;
+            line-height: 1.4;
+        }
+
+        code {
+            font-size: 0.8rem;
+            margin: 0 0.2rem;
+            padding: 0.5rem 0.8rem;
+            white-space: nowrap;
+            background: #efefef;
+            border: 1px solid #d3d3d3;
+            color: #000000;
+            border-radius: 3px;
+        }
+
+        pre > code {
+            display: block;
+            white-space: pre;
+            line-height: 1.5;
+            padding: 0;
+            margin: 0;
+        }
+
+        pre.prettyprint > code {
+            border: none;
+        }
+
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+        .image {
+            flex-basis: 40%
+        }
+        .text {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .disclaimerbox {
+            background-color: #eee;
+            border: 1px solid #eeeeee;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+            padding: 20px;
+        }
+
+        video.header-vid {
+            height: 140px;
+            border: 1px solid black;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+        }
+
+        img.header-img {
+            height: 140px;
+            border: 1px solid black;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+        }
+
+        img.rounded {
+            border: 0px solid #eeeeee;
+            border-radius: 10px ;
+            -moz-border-radius: 10px ;
+            -webkit-border-radius: 10px ;
+
+        }
+
+        a:link,a:visited
+        {
+            color: #1367a7;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #208799;
+        }
+
+        td.dl-link {
+            height: 160px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+            box-shadow:
+                    0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                    5px 5px 0 0px #fff, /* The second layer */
+                    5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                    10px 10px 0 0px #fff, /* The third layer */
+                    10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+                    15px 15px 0 0px #fff, /* The fourth layer */
+                    15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+                    20px 20px 0 0px #fff, /* The fifth layer */
+                    20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+                    25px 25px 0 0px #fff, /* The fifth layer */
+                    25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+            margin-left: 10px;
+            margin-right: 45px;
+        }
+
+
+        .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+            box-shadow:
+                    0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                    5px 5px 0 0px #fff, /* The second layer */
+                    5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                    10px 10px 0 0px #fff, /* The third layer */
+                    10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 30px;
+            margin-bottom: 5px;
+        }
+
+        .vert-cent {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        hr
+        {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+    </style>
+    <title>SegEarth-R1: Geospatial Pixel Reasoning via Large Language Model</title>
+</head>
+
+<body>
+<br>
+<span style="font-size:36px">
+    <div style="text-align: center;">
+      🌍SegEarth-R1: Geospatial Pixel Reasoning via Large Language Model
+    </div>
+</span>
+<br>
+<table align="center" width="300px"></table>
+    <tbody>
+    <tr>
+        <td align="center" width="100px">
+            <center>
+                <span style="font-size:20px">— Make OVSS possible in remote sensing contexts</span>
+            </center>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+<br>
+<!-- <br> -->
+<table align="center" width="1150px">
+    <tr>
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://likyoo.github.io">Kaiyu Li*</a><sup>1</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://github.com/xcarl1">Zepeng Xin*</a><sup>1</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://github.com/LiPang">Li Pang</a><sup>1</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://github.com/fitzpchao">Chao Pang</a><sup>2</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://github.com/BLING-1994">Yupeng Deng</a><sup>3</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://scholar.google.com/citations?user=1SHd5ygAAAAJ&hl=zh-CN&oi=ao">Jing Yao</a><sup>3</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="http://www.captain-whu.com/zh/person/xiaguisong.html">Guisong Xia</a><sup>2</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://gr.xjtu.edu.cn/en/web/dymeng">Deyu Meng</a><sup>1</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="100px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://gr.xjtu.edu.cn/en/web/zhiwang">Zhi Wang</a><sup>1</sup></span>
+            </div>
+        </td>
+
+        <td align="center" width="150px">
+            <div style="text-align: center;">
+                <span style="font-size:16px"><a href="https://gr.xjtu.edu.cn/en/web/caoxiangyong">Xiangyong Cao</a><sup>&#9993 1</sup></span>
+            </div>
+        </td>
+
+    </tr>
+</table>
+
+
+<br>
+
+<table align="center" width="700px">
+    <tbody>
+    <tr>
+        <td align="center" width="150px">
+            <center>
+                <span style="font-size:16px">Xi'an Jiaotong University<sup>1</sup></span>
+            </center>
+        </td>
+
+        <td align="center" width="150px">
+            <center>
+                <span style="font-size:16px">Wuhan University<sup>2</sup></span>
+            </center>
+        </td>
+
+        <td align="center" width="150px">
+            <center>
+                <span style="font-size:16px">Chinese Academy of Sciences<sup>3</sup></span>
+            </center>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+<!--<table align="center" width="700px">-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--        <td align="center" width="300px">-->
+<!--            <center>-->
+<!--                <span style="font-size:16px"><sup>&star;</sup>equal contribution</span>-->
+<!--            </center>-->
+<!--        </td>-->
+
+<!--        <td align="center" width="300px">-->
+<!--            <center>-->
+<!--                <span style="font-size:16px"><sup>&#9993</sup>corresponding author</span>-->
+<!--            </center>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<br>
+<table align="center" width="500px">
+    <tbody>
+    <tr>
+        <td align="center" width="150px">
+            <div style="text-align: center;">
+                <span style="font-size:20px">
+                    Code
+                    <a href="https://github.com/earth-insights/SegEarth-R1">[GitHub]</a>
+                </span>
+            </div>
+        </td>
+
+        <td align="center" width="150px">
+            <div style="text-align: center;">
+                <span style="font-size:20px">
+                    Paper
+                    <a href="">[arXiv]</a>
+                </span>
+            </div>
+        </td>
+
+        <td align="center" width="150px">
+          <div style="text-align: center;">
+              <span style="font-size:20px">
+                  Demo
+                  <a href="">[Colab]</a>
+              </span>
+          </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<hr>
+
+<!-- <div style="text-align: center;">
+    <h2>Teaser</h2>
+</div> -->
+
+
+<p style="text-align:justify; text-justify:inter-ideograph;">
+<table>
+    <tr>
+        <td>
+            <div style="text-align: center;">
+                <img src="resources/fig_title.png" width="100%">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                Comparison of semantic segmentation, referring segmentation and geospatial pixel inference. (left) Samples from the LoveDA and RRSIS-D datasets. (right) Samples from the EarthReason dataset. Previous tasks are limited by fixed taxonomies and explicit instructions, while geospatial pixel reasoning supports complex implicit instructions and requires the reasoning capability of the model.
+            </p>
+        </td>
+    </tr>
+</table>
+
+
+<br>
+<hr>
+<div style="text-align: center;">
+    <h1>Abstract</h1>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                Remote sensing has become critical for understanding environmental dynamics, urban planning, and disaster management. However, traditional remote sensing workflows often rely on explicit segmentation or detection methods, which struggle to handle complex, implicit queries that require reasoning over spatial context, domain knowledge, and implicit user intent. Motivated by this, we introduce a new task, i.e., geospatial pixel reasoning, which allows implicit querying and reasoning and generates the mask of the target region. To advance this task, we construct and release the first large-scale benchmark dataset called EarthReason, which comprises 5,434 manually annotated image masks with over 30,000 implicit question-answer pairs. Moreover, we propose SegEarth-R1, a simple yet effective language-guided segmentation baseline that integrates a hierarchical visual encoder, a large language model (LLM) for instruction parsing, and a tailored mask generator for spatial correlation. The design of SegEarth-R1 incorporates domain-specific adaptations, including aggressive visual token compression to handle ultra-high-resolution remote sensing images, a description projection module to fuse language and multi-scale features, and a streamlined mask prediction pipeline that directly queries description embeddings. Extensive experiments demonstrate that SegEarth-R1 achieves state-of-the-art performance on both reasoning and referring segmentation tasks, significantly outperforming traditional and LLM-based segmentation methods.
+            </p>
+        </td>
+    </tr>
+</table>
+
+<br>
+<hr>
+<div style="text-align: center;">
+    <h1>Method</h1>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <div style="text-align: center;">
+                <img src="resources/method.png" width="100%">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                <br>
+                Overview of the proposed SegEarth-R1 architecture. Given an image and a text description, a hierarchical visual encoder and a proposed connector are used to extract and compress visual tokens. Then, the visual tokens and description embeddings are fed into an LLM for instruction interpretation and semantic correlation. Finally, description embeddings are directly mapped to the query vector and used for spatial correlation and segmentation mask generation.
+            </p>
+        </td>
+    </tr>
+</table>
+
+<br>
+<hr>
+<div style="text-align: center;">
+    <h2>Quantitative Results</h2>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <!-- <p>
+                <b>
+                    title
+                </b>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                xxx
+            </p> -->
+            <div style="text-align: center;">
+                <img src="resources/results1.png" width="100%">
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+      <td>
+          <!-- <p>
+              <b>
+                  title
+              </b>
+          </p>
+          <p style="text-align:justify; text-justify:inter-ideograph;">
+              xxx
+          </p> -->
+          <div style="text-align: center;">
+              <img src="resources/results2.png" width="100%">
+          </div>
+      </td>
+    </tr>
+
+
+</table>
+
+<br>
+<hr>
+<div style="text-align: center;">
+    <h2>Visualizations</h2>
+</div>
+
+<table>
+    <tr>
+        <td>
+            <!-- <p style="text-align:justify; text-justify:inter-ideograph;">
+                xxx
+            </p> -->
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+              <strong>Visualizations of the segmentation results</strong>
+            </p>
+            <div style="text-align: center;">
+                <img src="resources/sample.jpg" width="100%">
+            </div>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+              <strong>More Visualization ...</strong>
+            </p>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                <!-- OpenEarthMap -->
+            </p>
+            <div style="text-align: center;">
+                <img src="resources/OEM.jpg" width="90%">
+            </div>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                <!-- UDD5 -->
+            </p>
+            <div style="text-align: center;">
+                <img src="resources/UDD5.jpg" width="90%">
+            </div>
+            <p style="text-align:justify; text-justify:inter-ideograph;">
+                <!-- WHU Building -->
+            </p>
+            <div style="text-align: center;">
+                <img src="resources/WHU.jpg" width="90%">
+            </div>
+        </td>
+    </tr>
+
+</table>
+
+<br>
+<hr>
+
+<div style="text-align: center;">
+    <h2>Acknowledgements</h2>
+</div>
+<p>
+    Based on a template by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a>.
+</p>
+
+<br>
+<br>
+<br>
+
+</body>
+</html>
