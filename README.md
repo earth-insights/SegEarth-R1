@@ -15,7 +15,7 @@ Remote sensing has become critical for understanding environmental dynamics, urb
 
 ## 🗞️ Update
 
-<!-- - **`2025-04-16`**: 🔥🔥🔥 We release the paper of SegEarth-R1 on [arXiv](). The code is scheduled to be released in May. -->
+<!-- - **`2025-04-15`**: 🔥🔥🔥 We release the paper of SegEarth-R1 on [arXiv](https://arxiv.org/abs/2504.09644). The code is scheduled to be released in May. -->
 
 
 ## ⭐️ Citation
