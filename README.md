@@ -23,4 +23,10 @@ Remote sensing has become critical for understanding environmental dynamics, urb
 If you find this project useful, welcome to cite us.
 
 ```bib
+@article{li2025segearth,
+  title={SegEarth-R1: Geospatial Pixel Reasoning via Large Language Model},
+  author={Li, Kaiyu and Xin, Zepeng and Pang, Li and Pang, Chao and Deng, Yupeng and Yao, Jing and Xia, Guisong and Meng, Deyu and Wang, Zhi and Cao, Xiangyong},
+  journal={arXiv preprint arXiv:2504.09644},
+  year={2025}
+}
 ```
