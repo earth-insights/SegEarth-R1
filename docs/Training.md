@@ -15,7 +15,7 @@ export DISABLE_ADDMM_CUDA_LT=1
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
     --output_dir ./checkpoint/SegEarthR1_EerthReason \
-    --num_train_epochs 30 \
+    --num_train_epochs 15 \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 2 \
     --gradient_accumulation_steps 1 \
