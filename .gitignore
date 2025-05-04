@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.log
+*.pt
+*.ckpt
+*.safetensors
+SegEarthR1/__pycache__/
+checkpoint/
+.vscode/
+train.sh
+.eval.sh
