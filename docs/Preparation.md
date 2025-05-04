@@ -4,7 +4,7 @@ Our model is trained separately on three datasets. You can download and organize
 
 * [EarthReason]()
 
-* [RRSIS-D]([文件夹 - Google 云端硬盘](https://drive.google.com/drive/folders/1Xqi3Am2Vgm4a5tHqiV9tfaqKNovcuK3A))
+* [RRSIS-D](https://drive.google.com/drive/folders/1Xqi3Am2Vgm4a5tHqiV9tfaqKNovcuK3A)
 * [RefSegRS](https://huggingface.co/datasets/JessicaYuan/RefSegRS)
 
 ```
