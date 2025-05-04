@@ -27,7 +27,7 @@ data_path/
 
 # Pretrained Weights📂
 
-You can download the pre-trained weights of [Phi-1.5](https://example.com/phi) and [Mask2Former](https://example.com/mask2former) from these links, and place them in the `pre_trained` folder according to the following structure:
+You can download the pre-trained weights of [Phi-1.5](https://huggingface.co/susnato/phi-1_5_dev) and [Mask2Former](https://dl.fbaipublicfiles.com/maskformer/mask2former/coco/panoptic/maskformer2_swin_base_384_bs16_50ep/model_final_9d7f02.pkl) from these links, and place them in the `pre_trained` folder according to the following structure:
 
 ```
 pre_trained/
