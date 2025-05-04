@@ -2,8 +2,7 @@
 
 Our model is trained separately on three datasets. You can download and organize these datasets in the following structure:
 
-* [EarthReason]()
-
+* [EarthReason](https://huggingface.co/datasets/earth-insights/EarthReason)
 * [RRSIS-D](https://drive.google.com/drive/folders/1Xqi3Am2Vgm4a5tHqiV9tfaqKNovcuK3A)
 * [RefSegRS](https://huggingface.co/datasets/JessicaYuan/RefSegRS)
 
