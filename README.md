@@ -17,6 +17,15 @@ Remote sensing has become critical for understanding environmental dynamics, urb
 
 - **`2025-04-15`**: 🔥🔥🔥 We release the paper of SegEarth-R1 on [arXiv](https://arxiv.org/abs/2504.09644). The code and dataset are scheduled to be released in May.
 
+## 🔧 Usage：
+
+Follow the guidelines below to set up:
+
+* [ Preparation ⚙️](docs/Preparation.md): Instructions for organizing datasets and pretrained weights for proper model training and inference.
+
+* [Installation 💻](docs/Installation.md): Set up the `segearthr1` conda environment, install dependencies, and clone the repo.
+* [Training 🏋️‍♂️](docs/Training.md): Run `train.sh` with DeepSpeed, modifying parameters like data and model paths for training.
+* [Evaluation 🎯](docs/Evalution.md): Run `eval.sh` to evaluate the model, updating paths as needed. 
 
 ## ⭐️ Citation
 
@@ -30,3 +39,7 @@ If you find this project useful, welcome to cite us.
   year={2025}
 }
 ```
+
+## 🙏 Acknowledgement
+
+We appreciate [PSALM](https://github.com/zamling/PSALM) and [Mask2Former](https://github.com/facebookresearch/Mask2Former) for making their models and code available as open-source contributions.
