@@ -39,4 +39,3 @@ export DISABLE_ADDMM_CUDA_LT=1
     --mm_projector_type "SparseConv_1" \
     --dataset_type 'EarthReason' \
 ```
-
