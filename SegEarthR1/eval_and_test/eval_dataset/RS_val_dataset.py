@@ -39,16 +39,6 @@ from SegEarthR1.train.refer import REFER
 from transformers import AutoTokenizer
 
 def preprocess_mask(mask, image_size):
-    """
-    对掩码进行预处理：缩放最长边到 image_size，然后填充到 (image_size, image_size)。
-    
-    参数：
-        mask: 输入掩码（numpy数组，形状为 [h, w] 或 [bs, h, w]，每个元素为0或1）
-        image_size: 目标尺寸（整数）
-    
-    返回：
-        预处理后的掩码（四维numpy数组，形状为 [bs, 1, image_size, image_size]）
-    """
     if len(mask.shape) == 2:
         mask = np.expand_dims(mask, axis=0)
     bs, h, w = mask.shape
@@ -79,14 +69,6 @@ def preprocess_mask(mask, image_size):
     return processed_masks
 
 def preprocess_image(image, image_size, pad_value=0):
-    """
-    对图像进行预处理：缩放最长边到 image_size，然后填充到 (image_size, image_size)
-    
-    :param image: 输入图像（numpy 数组）
-    :param image_size: 目标尺寸
-    :param pad_value: 填充值（默认为 0）
-    :return: 预处理后的图像
-    """
     h, w = image.shape[:2]
     if w > h:
         new_w = image_size
@@ -123,8 +105,6 @@ def tokenizer_special_tokens(prompt, tokenizer, image_token_index=IMAGE_TOKEN_IN
             raise ValueError(f'Unsupported tensor type: {return_tensors}')
         else:
             return input_ids
-
-
 
 def preprocess_llama2(sources, tokenizer):
     conv = conversation_lib.default_conversation.copy()
@@ -198,7 +178,6 @@ def preprocess_referring_instruction(instruction, tokenizer, REFER_token='[SEG]'
 
     return token_refer_id
 
-
 class RefSegRSDataset(Dataset):
     def __init__(self, base_data_path, tokenizer, split, image_size = 1024):
         super(RefSegRSDataset, self).__init__()
@@ -261,7 +240,6 @@ class RefSegRSDataset(Dataset):
         data_dict['labels'] = labels
         data_dict['dataset_type'] = 'refer_seg'
         
-        
         token_refer_id = preprocess_referring_instruction(instruction, self.tokenizer)
         refer_embedding_indices = torch.zeros_like(input_ids)
         refer_embedding_indices[input_ids == REFER_TOKEN_INDEX] = 1
@@ -269,9 +247,6 @@ class RefSegRSDataset(Dataset):
         data_dict['refer_embedding_indices'] = refer_embedding_indices
         
         return data_dict
-
-
-
 
 class RRSISDDataset(Dataset):
     def __init__(self, base_data_path, tokenizer, split, image_size = 1024):
