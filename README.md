@@ -19,10 +19,9 @@ Remote sensing has become critical for understanding environmental dynamics, urb
 
 ## 🔧 Usage：
 
-Follow the guidelines below to set up:
+Follow the guidelines below to set up, train and evaluate:
 
 * [ Preparation ⚙️](docs/Preparation.md): Instructions for organizing datasets and pretrained weights for proper model training and inference.
-
 * [Installation 💻](docs/Installation.md): Set up the `segearthr1` conda environment, install dependencies, and clone the repo.
 * [Training 🏋️‍♂️](docs/Training.md): Run `train.sh` with DeepSpeed, modifying parameters like data and model paths for training.
 * [Evaluation 🎯](docs/Evalution.md): Run `eval.sh` to evaluate the model, updating paths as needed. 
