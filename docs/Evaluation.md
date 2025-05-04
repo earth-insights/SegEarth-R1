@@ -11,6 +11,3 @@ python SegEarthR1/eval_and_test/eval.py \
   --mask_config "SegEarthR1/mask_config/maskformer2_swin_base_384_bs16_50ep.yaml" \
   --dataset_type "EarthReason" \
 ```
-
-
-
