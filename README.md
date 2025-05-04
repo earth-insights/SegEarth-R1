@@ -1,6 +1,6 @@
 # SegEarth-R1: Geospatial Pixel Reasoning via Large Language Model
 
-<font size=4><div align='center' > [[🤗 Project](https://earth-insights.github.io/SegEarth-R1)] [[🤗 Paper](https://arxiv.org/abs/2504.09644)] [[🤗 Dataset (Comming soon)]()] [[🤗 Checkpoints (Comming soon)]()] </div></font>
+<font size=4><div align='center' > [[🤗 Project](https://earth-insights.github.io/SegEarth-R1)] [[🤗 Paper](https://arxiv.org/abs/2504.09644)] [[🤗 Dataset](https://huggingface.co/datasets/earth-insights/EarthReason)] [[🤗 Checkpoints (Comming soon)]()] </div></font>
 
 <div align="center">
 <div>
