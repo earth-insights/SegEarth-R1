@@ -37,4 +37,3 @@ pre_trained/
 ├── Swin_base/
 │   └── model.pkl
 ```
-
