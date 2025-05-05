@@ -4,17 +4,17 @@ You can run `train.sh` to start training. Don't forget to modify the parameters 
 
 ```bash
 export DISABLE_ADDMM_CUDA_LT=1
-/opt/conda/envs/segearthr1/bin/deepspeed --master_port 12579 --include localhost:0 SegEarthR1/train/train.py \
+deepspeed --master_port 29500 --include localhost:0 segearth_r1/train/train.py \
     --deepspeed ./scripts/zero2.json \
     --data_path "your_data_path" \
     --model_name_or_path "your_phi-1_5_path" \
     --version "llava_phi" \
     --vision_tower "your_swin_base_path" \
-    --mask_config "SegEarthR1/mask_config/maskformer2_swin_base_384_bs16_50ep.yaml" \
+    --mask_config "segearth_r1/mask_config/maskformer2_swin_base_384_bs16_50ep.yaml" \
     --mm_vision_select_layer -2 \
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
-    --output_dir ./checkpoint/SegEarthR1_EerthReason \
+    --output_dir ./checkpoint/segearth_r1_EerthReason \
     --num_train_epochs 15 \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 2 \
@@ -36,6 +36,6 @@ export DISABLE_ADDMM_CUDA_LT=1
     --freeze_mm_mlp_adapter False \
     --bf16 True \
     --train_backbone False \
-    --mm_projector_type "SparseConv_1" \
+    --mm_projector_type "compression_connector" \
     --dataset_type 'EarthReason' \
 ```

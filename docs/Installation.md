@@ -7,7 +7,7 @@
 
 ## Set up conda envirnment:
 ```bash
-conda create --name=segearthr1 python=3.10
+conda create -n segearthr1 python=3.10
 conda activate segearthr1
 
 git clone https://github.com/earth-insights/SegEarth-R1.git
@@ -24,6 +24,6 @@ Follow [detectron2](https://detectron2.readthedocs.io/en/latest/tutorials/instal
 After preparing the required environment, run the following command to compile CUDA kernel for MSDeformAttn:
 
 ```
-cd SegEarthR1/model/mask_decoder/Mask2Former_Simplify/modeling/pixel_decoder/ops
+cd segearth_r1/model/mask_decoder/Mask2Former_Simplify/modeling/pixel_decoder/ops
 sh make.sh
 ```
