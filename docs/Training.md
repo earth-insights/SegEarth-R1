@@ -1,6 +1,6 @@
 # Training🚀
 
-You can run `train.sh` to start training. Don't forget to modify the parameters in the script to match your own paths.
+You can run `scripts/train.sh` to start training. Don't forget to modify the parameters in the script to match your own paths.
 
 ```bash
 export DISABLE_ADDMM_CUDA_LT=1

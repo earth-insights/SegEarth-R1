@@ -1,6 +1,6 @@
 # Evaluation🔍
 
-Run `eval.sh` to evaluate the model. Make sure to update the script paths to match your setup.
+Run `scripts/eval.sh` to evaluate the model. Make sure to update the script paths to match your setup.
 
 ```bash
 export CUDA_VISIBLE_DEVICES=0
