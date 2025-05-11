@@ -183,11 +183,14 @@ class RefSegRSDataset(Dataset):
         self.base_data_path = base_data_path
         self.tokenizer = tokenizer
         self.image_size = image_size
-        self.RefSegRS_images_root = os.path.join(self.base_data_path, "rs_ref_seg/RefSegRS/images")
-        self.RefSegRS_labels_root = os.path.join(self.base_data_path, "rs_ref_seg/RefSegRS/masks")
-        self.RefSegRS_txt = os.path.join(self.base_data_path, "rs_ref_seg/RefSegRS/output_phrase_val.txt")
-        if split == 'test':
-            self.RefSegRS_txt = os.path.join(self.base_data_path, "rs_ref_seg/RefSegRS/output_phrase_test.txt")   
+        split = split.lower()
+        if split not in ['val', 'test']:
+            print(f"[Warning] Unknown split '{split}'. Expected one of ['val', 'test']. Defaulting to 'val'.")
+            split = 'val'
+
+        self.RefSegRS_images_root = os.path.join(base_data_path, "rs_ref_seg/RefSegRS/images")
+        self.RefSegRS_labels_root = os.path.join(base_data_path, "rs_ref_seg/RefSegRS/masks")
+        self.RefSegRS_txt = os.path.join(base_data_path, f"rs_ref_seg/RefSegRS/output_phrase_{split}.txt")
         with open(self.RefSegRS_txt, 'r') as file:
             phases = file.readlines()
         images = []
@@ -253,6 +256,10 @@ class RRSISDDataset(Dataset):
         self.base_data_path = base_data_path
         self.tokenizer = tokenizer
         self.image_size = image_size
+        split = split.lower()
+        if split not in ['val', 'test']:
+            print(f"[Warning] Unknown split '{split}'. Expected one of ['val', 'test']. Defaulting to 'val'.")
+            split = 'val'
         self.RRSISD_data_root = os.path.join(base_data_path, "rs_ref_seg/RRSIS-D/")
         refer = REFER(self.RRSISD_data_root,'rrsisd','unc')
         ref_ids = refer.getRefIds(split = split)
@@ -324,17 +331,16 @@ class ReasonSegDataset(Dataset):
         self.base_data_path = base_data_path
         self.tokenizer = tokenizer
         self.image_size = image_size
-        self.ReasonSeg_images_root = os.path.join(base_data_path, "rs_reason_seg/RSReasonSeg/val/images")
-        self.ReasonSeg_labels_root = os.path.join(base_data_path, "rs_reason_seg/RSReasonSeg/val/labels")
-        self.ReasonSeg_QAs_root = os.path.join(base_data_path, "rs_reason_seg/RSReasonSeg/val/QAs")
-        if split == 'test':
-            self.ReasonSeg_images_root = os.path.join(base_data_path, "rs_reason_seg/RSReasonSeg/test/images")
-            self.ReasonSeg_labels_root = os.path.join(base_data_path, "rs_reason_seg/RSReasonSeg/test/labels")
-            self.ReasonSeg_QAs_root = os.path.join(base_data_path, "rs_reason_seg/RSReasonSeg/test/QAs")
-        self.images = self.load_file_paths(self.ReasonSeg_images_root, valid_extensions=('.jpg', '.jpeg', '.png'))
+        split = split.lower()
+        if split not in ['val', 'test']:
+            print(f"[Warning] Unknown split '{split}'. Expected one of ['val', 'test']. Defaulting to 'val'.")
+            split = 'val'
+        self.ReasonSeg_images_root = os.path.join(base_data_path, f"rs_reason_seg/RSReasonSeg/{split}/images")
+        self.ReasonSeg_labels_root = os.path.join(base_data_path, f"rs_reason_seg/RSReasonSeg/{split}/labels")
+        self.ReasonSeg_QAs_root = os.path.join(base_data_path, f"rs_reason_seg/RSReasonSeg/{split}/QAs")
         
+        self.images = self.load_file_paths(self.ReasonSeg_images_root, valid_extensions=('.jpg', '.jpeg', '.png'))
         self.labels = self.load_file_paths(self.ReasonSeg_labels_root, valid_extensions=('.png',))
-
         self.QAs_paths = self.load_file_paths(self.ReasonSeg_QAs_root, valid_extensions=('.json', '.txt'))
         self.QAs = []
         for QAs_path in self.QAs_paths:
