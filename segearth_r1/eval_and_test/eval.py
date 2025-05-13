@@ -1,3 +1,5 @@
+import os
+import cv2
 import torch
 from enum import Enum
 from tqdm import tqdm
@@ -84,59 +86,43 @@ class AverageMeter(object):
 
         return fmtstr.format(**self.__dict__)
     
-def compute_metric(intersection_meter,union_meter,acc_iou_meter, pr_meters, cur_res, gt):
+def compute_metric(intersection_meter, union_meter, acc_iou_meter, pr_meters, cur_res, gt):
     thresholds = [0.5, 0.6, 0.7, 0.8, 0.9]
     for i, result in enumerate(cur_res):
         gt_mask = gt[i].squeeze(0).int().cuda().contiguous()
         pred_masks = result["pred_masks"].int().cuda().contiguous()
+
         if result["scores"]:
-            scores = result["scores"]
-            scores = scores.cpu().numpy()
-            topk_scores,idx = torch.topk(torch.tensor(scores),1)
-            idx = idx.cpu().numpy()
-            topk_preds = pred_masks[idx,:]
+            scores = torch.tensor(result["scores"])
+            top_idx = torch.topk(scores, 1).indices.cpu().numpy()
+            preds_to_eval = pred_masks[top_idx, :]
         else:
-            topk_preds = None
+            preds_to_eval = [pred_masks]
+
         max_acc_iou = -1
-        max_iou = 0
-        max_intersection = 0
-        max_union = 0
-        
-        if topk_preds:
-            for i, pred_ in enumerate(topk_preds):
-                intersection, union, _ = intersectionAndUnionGPU(
-                    pred_masks, gt_mask, 2, ignore_index=255
-                )
-            
-                intersection, union = intersection.cpu().numpy(), union.cpu().numpy()
-                acc_iou = intersection / (union + 1e-5)
-                acc_iou[union == 0] = 1.0  # no-object target
-                fore_acc_iou = acc_iou[1]
-        else:
-            intersection, union, _ = intersectionAndUnionGPU(
-                pred_masks, gt_mask, 2, ignore_index=255
-            )
-            
+        best_iou = None
+        best_intersection = best_union = None
+
+        for pred in preds_to_eval:
+            intersection, union, _ = intersectionAndUnionGPU(pred, gt_mask, 2, ignore_index=255)
             intersection, union = intersection.cpu().numpy(), union.cpu().numpy()
+
             acc_iou = intersection / (union + 1e-5)
-            acc_iou[union == 0] = 1.0  # no-object target
-            fore_acc_iou = acc_iou[1]   
-            
-            if fore_acc_iou > max_acc_iou:
-                max_acc_iou = fore_acc_iou
-                max_iou = acc_iou
-                max_intersection = intersection
-                max_union = union
-                
-        intersection_meter.update(max_intersection)
-        union_meter.update(max_union)
-        acc_iou_meter.update(max_iou, n=1)
-        
+            acc_iou[union == 0] = 1.0  
+            foreground_iou = acc_iou[1]
+
+            if foreground_iou > max_acc_iou:
+                max_acc_iou = foreground_iou
+                best_iou = acc_iou
+                best_intersection = intersection
+                best_union = union
+
+        intersection_meter.update(best_intersection)
+        union_meter.update(best_union)
+        acc_iou_meter.update(best_iou, n=1)
+
         for threshold in thresholds:
-            if max_iou[1] > threshold:
-                pr_meters[threshold].update(1.0, n=1)
-            else:
-                pr_meters[threshold].update(0.0, n=1)
+            pr_meters[threshold].update(1.0 if best_iou[1] > threshold else 0.0, n=1)
         
 def intersectionAndUnionGPU(output, target, K, ignore_index=255):
     # 'K' classes, output and target sizes are N or N * L or N * H * W, each value in range 0 to K - 1.
@@ -172,6 +158,7 @@ class DataArguments:
     data_split: Optional[str] = field(default="val")
     use_seg_query: bool = False
     dataset_type: Optional[str] = field(default="RRSIS-D")
+    vis_path: Optional[str] = field(default=None)
 
 def evaluation():
     parser = transformers.HfArgumentParser(DataArguments)
@@ -251,6 +238,19 @@ def evaluation():
                     token_answer_id=None,
                     answer_embedding_indices=None
                     )
+            # vis
+            if data_args.vis_path is not None:
+                os.makedirs(data_args.vis_path, exist_ok=True)
+                for idx, image_name in enumerate(inputs['image_name']):
+                    gt_mask = inputs['masks'][idx].squeeze(0) * 255
+                    pred_mask = outputs[idx]['pred_masks'] * 255
+                    gt_mask_np = gt_mask.cpu().numpy().astype(np.uint8)
+                    pred_mask_np = pred_mask.cpu().numpy().astype(np.uint8)
+                    gt_mask_root = os.path.join(data_args.vis_path, image_name + "_gt.png")
+                    pred_mask_root = os.path.join(data_args.vis_path, image_name + "_pred.png")
+                    cv2.imwrite(gt_mask_root, gt_mask_np)
+                    cv2.imwrite(pred_mask_root, pred_mask_np)
+
             compute_metric(intersection_meter,union_meter,acc_iou_meter, pr_meters, outputs, gt)
     
     iou_class = intersection_meter.sum / (union_meter.sum + 1e-10)
