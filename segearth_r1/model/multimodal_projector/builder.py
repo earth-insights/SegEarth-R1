@@ -446,7 +446,7 @@ def build_vision_projector(config, delay_load=False, **kwargs):
         out_dim = getattr(config,'projector_outdim',4096) # 2048 
         input_dim = getattr(config,'mm_input_embeds',1024) # 1024
         return ResNetSwin(input_dim=input_dim,out_dim=out_dim)
-    if projector_type == 'compression_connector':
+    if projector_type == 'SparseConv_1':
         out_dim = getattr(config,'projector_outdim',4096) # 2048
         input_dim = getattr(config,'mm_input_embeds',1024) # 1024
         return Compression_Connector(input_dim, out_dim, size=16)
