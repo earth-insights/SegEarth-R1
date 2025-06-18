@@ -31,5 +31,5 @@ deepspeed --master_port 29500 --include localhost:0 segearth_r1/train/train.py \
     --freeze_mm_mlp_adapter False \
     --bf16 True \
     --train_backbone False \
-    --mm_projector_type "compression_connector" \
+    --mm_projector_type "SparseConv_1" \ # compession connector
     --dataset_type 'EarthReason' \
