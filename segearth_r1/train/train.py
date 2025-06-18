@@ -50,7 +50,6 @@ def rank0_print(*args):
     if local_rank == 0:
         print(*args)
 
-
 @dataclass
 class ModelArguments:
     model_name_or_path: Optional[str] = field(default="facebook/opt-125m")
@@ -353,10 +352,10 @@ def train():
     compute_dtype = (torch.float16 if training_args.fp16 else (torch.bfloat16 if training_args.bf16 else torch.float32)) # torch.float16
 
     mask_cfg = get_mask_config(config=model_args.mask_config)
-    mask_cfg.MODEL.MASK_FORMER.SEG_TASK = model_args.seg_task # 设置seg_task为referring或者sematic
-    bnb_model_from_pretrained_args = {} # 这是啥玩意
+    mask_cfg.MODEL.MASK_FORMER.SEG_TASK = model_args.seg_task
+    bnb_model_from_pretrained_args = {}
     print('using model segearth_r1')
-    model = segearth_r1.from_pretrained(      # 加载模型
+    model = segearth_r1.from_pretrained(
         model_args.model_name_or_path,
         mask_decoder_cfg=mask_cfg,
         add_cross_attn=True,
@@ -429,7 +428,6 @@ def train():
             for p in model.get_model().mm_projector.parameters():
                 p.requires_grad = False
 
-
         model.config.mm_use_im_start_end = data_args.mm_use_im_start_end = model_args.mm_use_im_start_end # False
         training_args.use_im_start_end = model_args.mm_use_im_start_end # False
         model.config.mm_use_im_patch_token = model_args.mm_use_im_patch_token # False
@@ -467,7 +465,6 @@ def train():
     else:
         safe_save_model_for_hf_trainer(trainer=trainer,
                                        output_dir=training_args.output_dir)
-
 
 if __name__ == "__main__":
     train()
